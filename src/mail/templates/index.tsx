@@ -72,7 +72,7 @@ export default function Email() {
                 color: 'rgb(198, 81, 15)',
               }}
             >
-              PRE-REGISTRATION COMPLETE
+              PRE-REGISTRATION COMPLETED
             </Text>
             <Heading
               as="h1"
