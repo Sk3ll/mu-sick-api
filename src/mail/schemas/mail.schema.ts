@@ -3,12 +3,12 @@ import { HydratedDocument } from 'mongoose';
 
 export type MailDocument = HydratedDocument<Mail>;
 
-@Schema()
+@Schema({ timestamps: true, versionKey: false })
 export class Mail {
-  @Prop()
+  @Prop({ required: true })
   name: string;
 
-  @Prop()
+  @Prop({ required: true })
   email: string;
 }
 

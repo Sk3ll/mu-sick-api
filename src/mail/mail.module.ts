@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { MailTransportProvider } from './providers/mail-transport.provider';
 import { MailSchema, Mail } from './schemas/mail.schema';
 import { MailService } from './services/mail.service';
 import { MailController } from './controllers/mail.controller';
@@ -9,6 +10,6 @@ import { MailController } from './controllers/mail.controller';
     MongooseModule.forFeature([{ name: Mail.name, schema: MailSchema }]),
   ],
   controllers: [MailController],
-  providers: [MailService],
+  providers: [MailService, MailTransportProvider],
 })
 export class MailModule {}

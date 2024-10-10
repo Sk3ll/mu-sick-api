@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { render } from '@react-email/render';
-import * as nodemailer from 'nodemailer';
+import { Transporter } from 'nodemailer';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import Email from '../templates';
 import { MailDto } from '../dto/mail.dto';
 import { Mail, MailDocument } from '../schemas/mail.schema';
+import { InjectTransporter } from '../decorators';
 
 interface SendMailConfiguration {
   email: string;
@@ -17,30 +18,18 @@ interface SendMailConfiguration {
 
 @Injectable()
 export class MailService {
-  private transporter: nodemailer.Transporter;
-
   constructor(
     private readonly config: ConfigService,
     @InjectModel(Mail.name) private readonly mailModel: Model<Mail>,
-  ) {
-    this.transporter = nodemailer.createTransport({
-      host: this.config.get<string>('EMAIL_HOST'),
-      port: Number(this.config.get<string>('EMAIL_PORT')),
-      secure: true,
-      auth: {
-        user: this.config.get<string>('EMAIL_FROM'),
-        pass: this.config.get<string>('EMAIL_PASS'),
-      },
-    });
-  }
+    @InjectTransporter() private readonly transporter: Transporter,
+  ) {}
 
   public findAll(): Promise<MailDocument[]> {
     return this.mailModel.find().exec();
   }
 
   public async create(mailDto: MailDto): Promise<string> {
-    const createdMail = new this.mailModel(mailDto);
-    await createdMail.save();
+    await this.mailModel.create(mailDto);
 
     await this.sendMail({
       email: mailDto.email,

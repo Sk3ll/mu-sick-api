@@ -1,5 +1,5 @@
 import { Controller, Post, Body, Get, HttpStatus } from '@nestjs/common';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MailService } from '../services/mail.service';
 import { MailDto } from '../dto/mail.dto';
 
@@ -17,6 +17,7 @@ export class MailController {
     return this.mailService.findAll();
   }
 
+  @ApiBody({ type: MailDto })
   @ApiResponse({
     status: HttpStatus.CREATED,
     description: 'Email registered into database and email sent successfully',
