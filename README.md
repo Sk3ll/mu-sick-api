@@ -9,19 +9,19 @@ This NestJS application showcases a full-stack backend service that integrates:
 
 ## Features
 
-- Email Service: Sends emails via nodemailer using a provider-based transporter for secure and reliable email functionality.
-- React-Email Templates: Dynamic and flexible email templates are created using react-email, making template management simple and efficient.
-- MongoDB Integration: The application connects to a MongoDB database through mongoose and runs the database inside a Docker container.
-- Input Validation: Ensures API requests are properly validated using class-validator for robust and secure inputs.
-- Swagger API Docs: Provides Swagger documentation accessible at /api-docs, making it easier to explore and test API endpoints.
+- **Email Service**: Sends emails via nodemailer using a provider-based transporter for secure and reliable email functionality.
+- **React-Email Templates**: Dynamic and flexible email templates are created using react-email, making template management simple and efficient.
+- **MongoDB Integration**: The application connects to a MongoDB database through mongoose and runs the database inside a Docker container.
+- **Input Validation**: Ensures API requests are properly validated using class-validator for robust and secure inputs.
+- **Swagger API Docs**: Provides Swagger documentation accessible at /api-docs, making it easier to explore and test API endpoints.
 
 ### Installation
 
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/your-repo/nestjs-app.git
-cd nestjs-app
+git clone https://github.com/Sk3ll/mu-sick-api.git
+cd mu-sick-api
 ```
 
 2. **Install Dependencies**
@@ -75,7 +75,7 @@ This application connects to MongoDB using mongoose, a powerful and easy-to-use 
 The MongoDB connection string is defined in the .env file using the DB_URI variable. Here's an example connection:
 
 ```ts
-MongooseModule.forRoot(process.env.MONGO_URI);
+MongooseModule.forRoot(process.env.DB_URI);
 ```
 
 The database will store persistent data for your application's models, such as emails, users, and other records.
@@ -85,7 +85,7 @@ The database will store persistent data for your application's models, such as e
 You can access the Swagger documentation at:
 
 ```bash
-http://localhost:3000/api-docs
+http://localhost:4000/api-docs
 ```
 
 Swagger is automatically generated for all the application’s API routes, making it easy to test the endpoints and see the available input/output formats.
