@@ -1,2 +1,1 @@
-export class Mail {
-}
+export class Mail {}
