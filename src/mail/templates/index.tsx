@@ -38,12 +38,13 @@ export default function Email() {
       >
         <Img
           alt="Background"
-          height="320"
-          src="https://firebasestorage.googleapis.com/v0/b/musick-29884.appspot.com/o/main-bg.webp?alt=media&token=3ce4de67-657e-4d9f-aec3-67dd338b7d16"
+          src="https://firebasestorage.googleapis.com/v0/b/musick-29884.appspot.com/o/musicklogo.webp?alt=media&token=a0d1b95f-6792-4ceb-ac69-3ce2fed221f3"
           style={{
+            minHeight: '320px',
+            height: '100%',
             width: '100%',
             borderRadius: 12,
-            objectFit: 'cover',
+            objectFit: 'contain',
           }}
         />
 
