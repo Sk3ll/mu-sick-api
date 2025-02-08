@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { render } from '@react-email/render';
+import { ReactElement } from 'react';
 import { Transporter } from 'nodemailer';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -13,7 +14,7 @@ interface SendMailConfiguration {
   email: string;
   subject: string;
   text?: string;
-  template: any;
+  template: ReactElement;
 }
 
 @Injectable()
